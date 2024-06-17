@@ -18,12 +18,14 @@ const userSchema = new mongoose.Schema({
   lineId: String,
   instagram: String,
   education: [{
-    level: String,
+    year: String,
     institutionName: String
   }],
   experience: [{
     company: String,
-    position: String
+    position: String,
+    startYear: String,
+    endYear: String,
   }],
   skills: [{
     name: String,
