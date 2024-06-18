@@ -9,19 +9,19 @@ const PORT = process.env.PORT || 3000;
 const fakeData = {
   username: 'sent128',
   nickname: 'Sent',
-  firstName: 'Nuttapong',
-  lastName: 'Akaranaruenart',
+  firstname: 'Nuttapong',
+  lastname: 'Akaranaruenart',
   position: 'Full Stack Developer',
   nationality: 'Thailand',
-  telephoneNumber: "0841096962",
-  startingDate: new Date(),
+  telephonenumber: "0841096962",
+  startingdate: new Date(),
   address: 'Regent Home 18, F Buliding, Chaengwattana St.',
-  subDistrict: 'Anusawari',
+  subdistrict: 'Anusawari',
   district: 'Bang Khen',
   province: 'Bangkok',
-  postalCode: '10220',
+  postalcode: '10220',
   facebook: 'https://www.facebook.com/sent128/',
-  lineId: '@sent128',
+  line: '@sent128',
   instagram: 'https://www.instagram.com/sent128/',
   education: [
     {
@@ -75,7 +75,12 @@ const fakeData = {
 //   .then(() => console.log('Connected to MongoDB'))
 //   .catch(err => console.error('Could not connect to MongoDB', err));
 
-app.use(bodyParser.json());
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  next();
+});
 
 app.get('/api/users/:id', async (req, res) => {
   try {
